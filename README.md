@@ -29,7 +29,7 @@ In essence, for each position $\mathbf{x}$ in the output, the cross-correlation 
 
 Consider the input image $ f $ and the kernel $ k $ as:
 
-\[
+$$
 f = 
 \left(\begin{smallmatrix}
 1 & 2 & 3 & 4 & 5 \\
@@ -45,32 +45,31 @@ a & b & c \\
 d & e & f \\
 g & h & i \\
 \end{smallmatrix}\right)
-\]
+$$
 
-When the kernel is slid such that its center aligns with the position $ (2,2) $ of the image (the value 13 in our example), the top-left cell of the kernel (with value $ a $) will align with the position $ (1,1) $ of the image (the value 7 in our example).
+When the kernel is slid such that its center aligns with the position $(2,2)$ of the image (the value 13 in our example), the top-left cell of the kernel (with value $a$) will align with the position $(1,1)$ of the image (the value 7 in our example).
 
-Now, let us understand the $ \mathbf{y} - \mathbf{x} $ computation for this specific cell.
-$ \mathbf{x} $ is the position in the image where the center of the kernel is currently aligned. In our example, $ \mathbf{x} = (2,2) $.
-$ \mathbf{y} $ is the position in the image that corresponds to a specific cell in the kernel. For the top-left cell of the kernel (value $ a $), $ \mathbf{y} = (1,1) $.
-So, $ \mathbf{y} - \mathbf{x} $ for the top-left cell of the kernel when its center is at $ (2,2) $ is: $(1,1) - (2,2) = (-1,-1)$.
+Now, let us understand the $\mathbf{y} - \mathbf{x}$ computation for this specific cell.
+$\mathbf{x}$ is the position in the image where the center of the kernel is currently aligned. In our example, $\mathbf{x} = (2,2)$.
+$\mathbf{y}$ is the position in the image that corresponds to a specific cell in the kernel. For the top-left cell of the kernel (value $a$), $\mathbf{y} = (1,1)$.
+So, $\mathbf{y} - \mathbf{x}$ for the top-left cell of the kernel when its center is at $(2,2)$ is: $(1,1) - (2,2) = (-1,-1)$.
 
-This result, $ (-1,-1) $, indicates the relative position of the top-left cell of the kernel with respect to its center. It tells us that the top-left cell is 1 unit to the left and 1 unit above the center of the kernel.
-
-
+This result, $(-1,-1)$, indicates the relative position of the top-left cell of the kernel with respect to its center. It tells us that the top-left cell is 1 unit to the left and 1 unit above the center of the kernel.
 
 
 
 
 
-The cross-correlation $\left(f \star k\right)(\mathbf{x})$ provides a measure of similarity between the kernel $k$ and the input signal $f$ at position $\mathbf{x}$. To perform this operation computationally, we discretise the convolution operation as expressed in Equation \ref{cross-corr-1} in the discrete domain. Assuming an equidistant discretisation of $\mathbb{R}^2$ with $K {\mathbf{y}}=1$, the discrete form of the cross-correlation is given by:
 
-\begin{equation} \label{cross-corr-discrete}
+
+The cross-correlation $\left(f \star k\right)(\mathbf{x})$ provides a measure of similarity between the kernel $k$ and the input signal $f$ at position $\mathbf{x}$. To perform this operation computationally, we discretise the convolution operation as expressed in **Equation \ref{cross-corr-1}** in the discrete domain. Assuming an equidistant discretisation of $\mathbb{R}^2$ with $K {\mathbf{y}}=1$, the discrete form of the cross-correlation is given by:
+
+$$
 (f \star k)(\mathbf{x}) 
 =\sum_{{\mathbf{y}} \in \mathbb{Z}^2} f({\mathbf{y}}) k(\mathbf{y}-{\mathbf{x}})
-\end{equation} 
+$$
 
 The translation $G$-map of cross-correlations arises from the fact that the same convolution operation is performed for every $\mathbf{y} \in \mathbb{Z}^2$. 
-
 
 
 
@@ -94,14 +93,15 @@ We can express the $G$-map requirement as:
 
 Given the cross-correlation expressed in Equation \ref{cross-corr-discrete} and the left regular group representation $\lambda(g) f(\mathbf{x}) = f(\mathbf{x} - \mathbf{t})$, let us prove Equation \ref{cross-corr-cov}.
 
-Let us use the substitution $ \mathbf{y} \rightarrow \mathbf{y}+\mathbf{x} $.
-
+Let us use the substitution $\mathbf{y} \rightarrow \mathbf{y}+\mathbf{x}$.
 
 Starting with the left-hand side:
-\begin{align*}
-\lambda(g) (f \star k)(\mathbf{x}) & = \lambda(g) \left( \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f({\mathbf{y}}) k(\mathbf{y}-{\mathbf{x}}) \right) \\
-& = \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y} - \mathbf{t}) k(\mathbf{y}-{\mathbf{x}}) \\
-\end{align*}
+$$
+\begin{array}{rl}
+\lambda(g) (f \star k)(\mathbf{x}) & = \lambda(g) \left( \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f({\mathbf{y}}) k(\mathbf{y}-{\mathbf{x}}) \right), \\
+& = \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y} - \mathbf{t}) k(\mathbf{y}-{\mathbf{x}}).
+\end{array}
+$$
 
 Note here that the left regular group action $\lambda(g)$ is defined to act on the function $f$, not on the kernel $k$. This is a key aspect of the group action: it acts on the elements of a set (in this case, the set of functions that we are cross-correlating with the kernel), and not on the operation itself (in this case, the kernel or the cross-correlation operation). In convolutional neural networks, this group action corresponds to translating the input image (which is represented by the function $f$), not the kernel. The kernel is slid across the image, but it is the image that is being translated by the group action. 
 
