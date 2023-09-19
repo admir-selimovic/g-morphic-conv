@@ -1,8 +1,5 @@
 
-# Translation Group $(\mathbb{R}^2,+)$
-
-
-## Translation $G$-morphism in convolution
+# Translation $G$-morphism in convolution; $G = (\mathbb{R}^2,+)$
 
 Cross-correlations and convolutions are closely related operations involving the application of a kernel or filter to input data. In cross-correlation, the kernel is slid over the input signal, computing element-wise multiplications between the kernel and corresponding portions of the input signal at each position. The resulting multiplications are summed to yield the cross-correlation value. 
 
@@ -77,7 +74,7 @@ $$
 $$
 
 
-### Proof
+## Proof
 
 Given the cross-correlation expressed in *Equation 2* and the left regular group representation $\lambda(g) f(\mathbf{x}) = f(\mathbf{x} - \mathbf{t})$, let us prove *Equation 3*.
 
