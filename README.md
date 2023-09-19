@@ -1,6 +1,7 @@
 
 # Translation Group $(\mathbb{R}^2,+)$
 
+
 ## Translation $G$-morphism in convolution
 
 Cross-correlations and convolutions are closely related operations involving the application of a kernel or filter to input data. In cross-correlation, the kernel is slid over the input signal, computing element-wise multiplications between the kernel and corresponding portions of the input signal at each position. The resulting multiplications are summed to yield the cross-correlation value. 
@@ -9,9 +10,11 @@ Conversely, in convolution, the kernel is first flipped (reflected) horizontally
 
 In the case of $\mathbb{R}^2$, the cross-correlation of a kernel $k: \mathbb{R}^2 \rightarrow \mathbb{R}$ at position $\mathbf{x} \in \mathbb{R}^2$ with an input signal $f: \mathbb{R}^2 \rightarrow \mathbb{R}$ is defined as an integral transform. This operation involves translating the kernel to position $\mathbf{x}$, multiplying it with the function $f$, and taking the inner product (integral):
 
+<a name="eq1"></a>
+
 $$
-\left(f \star k\right)(\mathbf{x}) = \int f\left(\mathbf{y}\right) k\left(\mathbf{y} - \mathbf{x}\right) d \mathbf{y}
-$$
+\left(f \star k\right)(\mathbf{x}) = \int f\left(\mathbf{y}\right) k\left(\mathbf{y} - \mathbf{x}\right) d \mathbf{y} \qquad \text{(1)} 
+$$ 
 
 Here, the kernel $k$ is translated to $\mathbf{x}$. This translation aligns the kernel with the input signal $f$ at the specified position $\mathbf{x}$. The resulting inner product is computed by multiplying the translated kernel $k\left(\mathbf{y}-\mathbf{x}\right)$ with the function $f\left(\mathbf{y}\right)$ and integrating over $\mathbf{y}$.
 
@@ -22,8 +25,6 @@ The term $k(\mathbf{y}-\mathbf{x})$ represents the kernel centered at $\mathbf{x
 The image function $f$ is evaluated at all positions $\mathbf{y}$ because we are looking at how the kernel, when centered at $\mathbf{x}$, aligns with the image over a range of positions around $\mathbf{x}$. The kernel has a certain size or footprint, so when it is centered at $\mathbf{x}$, it overlaps with the image over a range of positions, not just at $\mathbf{x}$. This is why we need to consider $f(\mathbf{y})$ for all $\mathbf{y}$ in the vicinity of $\mathbf{x}$.
 
 In essence, for each position $\mathbf{x}$ in the output, the cross-correlation operation looks at how the kernel, centered at $\mathbf{x}$, aligns with the image over a range of positions around $\mathbf{x}$. This is captured by the product $k(\mathbf{y}-\mathbf{x}) f(\mathbf{y})$ and the summation over all $\mathbf{y}$.
-
-
 
 
 
