@@ -1,3 +1,3 @@
 # $G$-Morphic Convolution
 
-Group-theoretic constructions to study $G$-morphism in convolution.
+Group-theoretic study of $G$-morphism in convolution.
