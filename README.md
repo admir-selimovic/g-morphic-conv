@@ -10,8 +10,6 @@ Conversely, in convolution, the kernel is first flipped (reflected) horizontally
 
 In the case of $\mathbb{R}^2$, the cross-correlation of a kernel $k: \mathbb{R}^2 \rightarrow \mathbb{R}$ at position $\mathbf{x} \in \mathbb{R}^2$ with an input signal $f: \mathbb{R}^2 \rightarrow \mathbb{R}$ is defined as an integral transform. This operation involves translating the kernel to position $\mathbf{x}$, multiplying it with the function $f$, and taking the inner product (integral):
 
-<a name="eq1"></a>
-
 $$
 \left(f \star k\right)(\mathbf{x}) = \int f\left(\mathbf{y}\right) k\left(\mathbf{y} - \mathbf{x}\right) d \mathbf{y} \qquad \text{(1)} 
 $$ 
@@ -25,8 +23,6 @@ The term $k(\mathbf{y}-\mathbf{x})$ represents the kernel centered at $\mathbf{x
 The image function $f$ is evaluated at all positions $\mathbf{y}$ because we are looking at how the kernel, when centered at $\mathbf{x}$, aligns with the image over a range of positions around $\mathbf{x}$. The kernel has a certain size or footprint, so when it is centered at $\mathbf{x}$, it overlaps with the image over a range of positions, not just at $\mathbf{x}$. This is why we need to consider $f(\mathbf{y})$ for all $\mathbf{y}$ in the vicinity of $\mathbf{x}$.
 
 In essence, for each position $\mathbf{x}$ in the output, the cross-correlation operation looks at how the kernel, centered at $\mathbf{x}$, aligns with the image over a range of positions around $\mathbf{x}$. This is captured by the product $k(\mathbf{y}-\mathbf{x}) f(\mathbf{y})$ and the summation over all $\mathbf{y}$.
-
-
 
 Consider the input image $f$ and the kernel $k$ as:
 
@@ -57,12 +53,6 @@ So, $\mathbf{y} - \mathbf{x}$ for the top-left cell of the kernel when its cente
 
 This result, $(-1,-1)$, indicates the relative position of the top-left cell of the kernel with respect to its center. It tells us that the top-left cell is 1 unit to the left and 1 unit above the center of the kernel.
 
-
-
-
-
-
-
 The cross-correlation $\left(f \star k\right)(\mathbf{x})$ provides a measure of similarity between the kernel $k$ and the input signal $f$ at position $\mathbf{x}$. To perform this operation computationally, we discretise the convolution operation as expressed in *Equation 1* in the discrete domain. Assuming an equidistant discretisation of $\mathbb{R}^2$ with $\Delta {\mathbf{y}}=1$, the discrete form of the cross-correlation is given by:
 
 $$
@@ -71,9 +61,6 @@ $$
 $$
 
 The translation $G$-map of cross-correlations arises from the fact that the same convolution operation is performed for every $\mathbf{y} \in \mathbb{Z}^2$. 
-
-
-
 
 The requirement we seek is $G$-map wrt translation:
 
@@ -92,7 +79,7 @@ $$
 
 ### Proof
 
-Given the cross-correlation expressed in *Equation 2* and the left regular group representation $\lambda(g) f(\mathbf{x}) = f(\mathbf{x} - \mathbf{t})$, let us prove *Equation 2*.
+Given the cross-correlation expressed in *Equation 2* and the left regular group representation $\lambda(g) f(\mathbf{x}) = f(\mathbf{x} - \mathbf{t})$, let us prove *Equation 3*.
 
 Let us use the substitution $\mathbf{y} \rightarrow \mathbf{y}+\mathbf{x}$.
 
@@ -108,7 +95,6 @@ $$
 Note here that the left regular group action $\lambda(g)$ is defined to act on the function $f$, not on the kernel $k$. This is a key aspect of the group action: it acts on the elements of a set (in this case, the set of functions that we are cross-correlating with the kernel), and not on the operation itself (in this case, the kernel or the cross-correlation operation). In convolutional neural networks, this group action corresponds to translating the input image (which is represented by the function $f$), not the kernel. The kernel is slid across the image, but it is the image that is being translated by the group action. 
 
 When we write $\lambda(g) (f \star k)(\mathbf{x})$, we are saying translate the image by $g$, then cross-correlate the translated image with the kernel to get the output at position $\mathbf{x}$. This is why, in the proof, we apply the group action to $f(\mathbf{y})$ to get $f(\mathbf{y} - \mathbf{t})$, and not to $k(\mathbf{y}-\mathbf{x})$.
-
 
 Continuing our proof and using the substitution $\mathbf{y} \rightarrow \mathbf{y}+\mathbf{x}$:
 
