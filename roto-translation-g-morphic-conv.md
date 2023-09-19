@@ -67,6 +67,7 @@ The operator $((\cdot) \star k)(\mathbf{x} , \theta)$ corresponds to the lifting
 
 The commutative nature of the diagram signifies that the order of applying lifting cross-correlation and rotation does not affect the outcome. Hence, we describe $\mathrm{SE}(2)$ group lifting convolutions as roto-translation $G$-map.
 
+
 ## Example
 
 As an example, consider the Sobel operator for the kernel $k_a$. The Sobel operator is used in image processing and computer vision to perform a 2D spatial gradient measurement on an image, emphasizing edges and transitions. $k$, as defined above, responds maximally to edges running vertically and minimally to edges running horizontally.
@@ -123,7 +124,6 @@ $$
 $$
 
 Comparing the two expressions, we can see that they are equivalent. This confirms that the lifting cross-correlation operation is a $G$-map with respect to the roto-translation group $\mathrm{SE}(2)$. The order of applying the lifting cross-correlation and the rotation does not affect the outcome, confirming the roto-translation $G$-equivariance property.
-
 
 
 ## Subsequent layers
