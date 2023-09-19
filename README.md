@@ -65,8 +65,6 @@ This result, $(-1,-1)$, indicates the relative position of the top-left cell of 
 
 The cross-correlation $\left(f \star k\right)(\mathbf{x})$ provides a measure of similarity between the kernel $k$ and the input signal $f$ at position $\mathbf{x}$. To perform this operation computationally, we discretise the convolution operation as expressed in *Equation 1* in the discrete domain. Assuming an equidistant discretisation of $\mathbb{R}^2$ with $\Delta {\mathbf{y}}=1$, the discrete form of the cross-correlation is given by:
 
-<a name="eq2"></a>
-
 $$
 (f \star k)(\mathbf{x}) 
 =\sum_{{\mathbf{y}} \in \mathbb{Z}^2} f({\mathbf{y}}) k(\mathbf{y}-{\mathbf{x}}) \qquad \text{(2)}
@@ -88,13 +86,13 @@ where $\lambda(g)$ is a left regular representation of the translation group act
 We can express the $G$-map requirement as:
 
 $$
-\lambda(g) (f \star k) = (\lambda(g) f) \star k
+\lambda(g) (f \star k) = (\lambda(g) f) \star k \qquad \text{(3)} 
 $$
 
 
 ### Proof
 
-Given the cross-correlation expressed in *Equation 2* and the left regular group representation $\lambda(g) f(\mathbf{x}) = f(\mathbf{x} - \mathbf{t})$, let us prove **Equation \ref{cross-corr-cov}**.
+Given the cross-correlation expressed in *Equation 2* and the left regular group representation $\lambda(g) f(\mathbf{x}) = f(\mathbf{x} - \mathbf{t})$, let us prove *Equation 2*.
 
 Let us use the substitution $\mathbf{y} \rightarrow \mathbf{y}+\mathbf{x}$.
 
