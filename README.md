@@ -80,27 +80,23 @@ The requirement we seek is $G$-map wrt translation:
   <img src="./img/g-morph-conv-trans-diag.png" width="200">
 </div>
 
-\[\begin{tikzcd}
-	f && f^{\star} \\
-	\\
-	f^{\lambda} && f^{\star \lambda} \equiv f^{\lambda \star} \quad \quad \
-	\arrow["(\cdot) \star k"{description}, from=1-1, to=1-3]
-	\arrow["{\lambda(g)}"{description}, from=1-1, to=3-1]
-	\arrow["{\lambda(g)}"{description}, from=1-3, to=3-3]
-	\arrow["(\cdot) \star k"{description}, from=3-1, to=3-3]
-\end{tikzcd}\]
 where $\lambda(g)$ is a left regular representation of the translation group action.
 
 We can express the $G$-map requirement as:
-\begin{equation} \label{cross-corr-cov}
-\lambda(g) (f \star k) = (\lambda(g) f) \star k
-\end{equation} 
 
-Given the cross-correlation expressed in Equation \ref{cross-corr-discrete} and the left regular group representation $\lambda(g) f(\mathbf{x}) = f(\mathbf{x} - \mathbf{t})$, let us prove Equation \ref{cross-corr-cov}.
+$$
+\lambda(g) (f \star k) = (\lambda(g) f) \star k
+$$
+
+
+### Proof
+
+Given the cross-correlation expressed in **Equation \ref{cross-corr-discrete}** and the left regular group representation $\lambda(g) f(\mathbf{x}) = f(\mathbf{x} - \mathbf{t})$, let us prove **Equation \ref{cross-corr-cov}**.
 
 Let us use the substitution $\mathbf{y} \rightarrow \mathbf{y}+\mathbf{x}$.
 
 Starting with the left-hand side:
+
 $$
 \begin{array}{rl}
 \lambda(g) (f \star k)(\mathbf{x}) & = \lambda(g) \left( \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f({\mathbf{y}}) k(\mathbf{y}-{\mathbf{x}}) \right), \\
@@ -113,20 +109,23 @@ Note here that the left regular group action $\lambda(g)$ is defined to act on t
 When we write $\lambda(g) (f \star k)(\mathbf{x})$, we are saying translate the image by $g$, then cross-correlate the translated image with the kernel to get the output at position $\mathbf{x}$. This is why, in the proof, we apply the group action to $f(\mathbf{y})$ to get $f(\mathbf{y} - \mathbf{t})$, and not to $k(\mathbf{y}-\mathbf{x})$.
 
 
-Continuing our proof and using the substitution $ \mathbf{y} \rightarrow \mathbf{y}+\mathbf{x} $:
-\begin{align*}
-& = \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y}+\mathbf{x}-\mathbf{t}) k(\mathbf{y}) \\
-& = \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y}- (\mathbf{t}-\mathbf{x})) k (\mathbf{y})
-\end{align*}
+Continuing our proof and using the substitution $\mathbf{y} \rightarrow \mathbf{y}+\mathbf{x}$:
+
+$$
+\begin{array}{rl}
+& = \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y}+\mathbf{x}-\mathbf{t}) k(\mathbf{y}), \\
+& = \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y}- (\mathbf{t}-\mathbf{x})) k (\mathbf{y}).
+\end{array}
+$$
 
 Now, the right-hand side:
+
 $$
-\begin{aligned}
-((\lambda(g) f) \star k)(\mathbf{x}) & =\sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y}-\mathbf{t}) k(\mathbf{y}-\mathbf{x}) \\
-& =\sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y}+\mathbf{x}-\mathbf{t}) k (\mathbf{y}) \\
-& =\sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y}- (\mathbf{t}-\mathbf{x})) k (\mathbf{y})
-\end{aligned}
+\begin{array}{rl}
+((\lambda(g) f) \star k)(\mathbf{x}) & = \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y}-\mathbf{t}) k(\mathbf{y}-\mathbf{x}), \\
+& = \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y}+\mathbf{x}-\mathbf{t}) k (\mathbf{y}), \\
+& = \sum_{{\mathbf{y}} \in \mathbb{Z}^2} f(\mathbf{y}- (\mathbf{t}-\mathbf{x})) k (\mathbf{y}).
+\end{array}
 $$
+
 This result matches the left-hand side computed earlier, confirming the $G$-map property. We see that a translation followed by a cross-correlation is the same as a cross-correlation followed by a translation.
-
-
