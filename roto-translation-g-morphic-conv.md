@@ -12,15 +12,9 @@ $$
 
 Convolutions, in general, are not roto-translation $G$-maps:
 
-\[\begin{tikzcd}
-	f && f^{\star} \\
-	\\
-	f^{\lambda} && f^{\star \lambda} \neq f^{\lambda \star} \quad \quad \
-	\arrow["\left((\cdot) \star k\right)(\mathbf{x})"{description}, from=1-1, to=1-3]
-	\arrow["{\lambda(\theta)}"{description}, from=1-1, to=3-1]
-	\arrow["{\lambda(\theta)}"{description}, from=1-3, to=3-3]
-	\arrow["\left((\cdot) \star k\right)(\mathbf{x})"{description}, from=3-1, to=3-3]
-\end{tikzcd}\]
+<div align="center"> 
+  <img src="https://github.com/admir-selimovic/g-morphic-conv/blob/main/img/g-morph-conv-roto-trans-diag-1.png" width="200">
+</div>
 
 This becomes evident when considering that the convolution operator ${\left(f \star k\right)(\mathbf{x}) = (f, \lambda(\mathbf{x}) k)}$ is defined by the representation $\lambda(\mathbf{x})$ of the translation group $\mathbb{R}^2$, while the other representation, $\lambda(\theta)$, corresponds to the rotation group $\mathrm{SO}(2)$. This results in non-commutativity. 
 
@@ -47,20 +41,10 @@ This convolution operation involves transforming the kernel $k$ by the inverse r
 $\mathrm{SE}(2)$ group convolution allows for both translation and rotation $G$-mapping, achieved by applying convolutions over the spatial domain while considering the combined effects of translations and rotations. By doing so, we can capture the spatial relationships and patterns present in the data, taking into account both translation and rotation transformations.
 
 Thus, the requirement we seek is:
-\begin{center}
-\hspace*{1cm} 
-\begin{tikzcd}[row sep=60px, column sep =60px]
-f 
-\arrow[r, "((\cdot) \star k)(\mathbf{x} \comma \theta)"{description}]
-\arrow[d, swap, "\lambda(\theta)"{description}, black]
- & f^{\star} 
-\arrow[d, "\lambda(\theta)"{description}, black] 
- & \\
-f^{\lambda} 
-\arrow[r, black, "((\cdot) \star k)(\mathbf{x} \comma \theta)"{description} black]
- & f^{\star \lambda} \equiv f^{\lambda \star}
-\end{tikzcd}
-\end{center}
+
+<div align="center"> 
+  <img src="https://github.com/admir-selimovic/g-morphic-conv/blob/main/img/g-morph-conv-roto-trans-diag-2.png" width="200">
+</div>
 
 In the diagram, $f$ is the input feature map defined on $\mathbb{R}^2$. 
 The operator $((\cdot) \star k)(\mathbf{x} , \theta)$ corresponds to the lifting cross-correlation, $((\cdot), \ \lambda(\mathbf{x}) \ \lambda(\theta) \ k)$, where $\lambda(\mathbf{x}): \mathbb{R}^2 \rightarrow \mathbb{R}^2$ and $\lambda(\theta): \mathrm{SO}(2) \rightarrow \mathbb{R}^2$. The final output feature map, $f^{\star \lambda} \equiv f^{\lambda \star}$, belongs to $\mathrm{SE}(2)$. 
@@ -76,7 +60,7 @@ As an example, consider the Sobel operator for the kernel $k_a$. The Sobel opera
   <img src="https://github.com/admir-selimovic/g-morphic-conv/blob/main/img/g-morph-conv-diag.png" width="400">
 </div>
 
-When a kernel is rotated, such as $\lambda_{\theta} k_a$, and cross-correlated with a two-dimensional feature map $f_a$, it produces a three-dimensional lifted feature map $f_b$. This lifted feature map is no longer dependent solely on the coordinates $x$ and $y$, as it accounts for both translation and rotation. Therefore, an additional axis $\theta$ is added to represent the subgroup of rotations. The term \textit{lifting }refers to the inclusion of an additional axis ($\theta$) in the output, which disentangles features under rotational transformations. Consequently, the output feature map $f_b$ becomes three-dimensional due to the presence of the additional axis.
+When a kernel is rotated, such as $\lambda_{\theta} k_a$, and cross-correlated with a two-dimensional feature map $f_a$, it produces a three-dimensional lifted feature map $f_b$. This lifted feature map is no longer dependent solely on the coordinates $x$ and $y$, as it accounts for both translation and rotation. Therefore, an additional axis $\theta$ is added to represent the subgroup of rotations. The term *lifting* refers to the inclusion of an additional axis ($\theta$) in the output, which disentangles features under rotational transformations. Consequently, the output feature map $f_b$ becomes three-dimensional due to the presence of the additional axis.
 
 In the diagram above, $f_a$ is the input feature map in $L^2(\mathbb{R}^2)$. The operator $(k_a \ast f_a)(\mathbf{x}, \theta)$ corresponds to the lifting cross-correlation, where ${\lambda^a_\mathbf{x}: \mathbb{R}^2 \rightarrow L^2\left(\mathbb{R}^2\right)}$ and ${\lambda^a_\theta: SO(2) \rightarrow L^2\left(\mathbb{R}^2\right)}$ denote the translations and rotations, respectively. Similarly, $(k_b \ast f_c)(\mathbf{x}, \theta)$ represents the subsequent layer lifting cross-correlation operation, with ${\lambda^b_\mathbf{x}: \mathbb{R}^2 \rightarrow L^2\left(SE(2)\right)}$ and ${\lambda^b_\theta: SO(2) \rightarrow L^2\left(SE(2)\right)}$ representing the translations and rotations involved. The final output feature map belongs to $L^2(SE(2))$. Recall that $SO(2)$ represents rotations around the origin in a two-dimensional plane, while $SE(2)$ includes rotations and translations but not reflections.
 
