@@ -128,7 +128,7 @@ Comparing the two expressions, we can see that they are equivalent. This confirm
 
 ## Subsequent layers
 
-Now, the question arises as to what type of convolution operator should be employed in the subsequent layers of the network, given the lifted feature maps. We continue to use the same template:
+The question arises as to what type of convolution operator should be employed in the subsequent layers of the network, given the lifted feature maps. We continue to use the same template:
 
 $$
 (k \ast f)(\mathbf{x}, \theta) = \left(\lambda_g \ k, f\right) = \left(\lambda_{\mathbf{x}} \ \lambda_{\theta} \ k, f\right) \qquad \text{(1)}
@@ -143,17 +143,15 @@ Once again, the formulation in *Equation 1* is split due to the semi-direct prod
 The kernel $k_b$ now becomes three-dimensional, assigning weights to relative orientations. It is important to note that the rotations in the kernel account for both planar rotation and periodic shifts. A high response in the output feature map occurs when all parts of the input feature map $f_c$ align with the transformed kernel $\lambda^b_\mathbf{x} \lambda^b_\theta k_b$. In other words, complete matching between the three-dimensional pattern in the kernel and the input feature map $f_c$ results in a high response.
 
 
-
 ## Summary
 
 In summary, group convolution is essentially template-matching with a kernel transformed by a group action, whereby we compute an inner product between the transformed kernel and the input data across all possible group transformations.
-Specifically, a kernel \( k \) undergoes a transformation via a group action, \( \lambda(g) \), where \( g \) belongs to the group \( G \). The convolution operation is then realised as the inner product between this transformed kernel and an input signal function \( f \) over all group transformations, 
-\( (k \ast f)(g) = \left(\lambda(g) k, f\right) \), 
-where the outcome is a collection of feature maps in a higher-dimensional space, each representing a function on the group \( G \). These feature maps subsequently serve as the foundation for ensuing template-matching procedures in subsequent network layers.
+Specifically, a kernel $k$ undergoes a transformation via a group action, $\lambda(g)$, where $g$ belongs to the group $G$. The convolution operation is then realised as the inner product between this transformed kernel and an input signal function $f$ over all group transformations, 
+$(k \ast f)(g) = \left(\lambda(g) k, f\right)$, 
+where the outcome is a collection of feature maps in a higher-dimensional space, each representing a function on the group $G$. These feature maps subsequently serve as the foundation for ensuing template-matching procedures in subsequent network layers.
 
 The introduction of these elevated-dimensional feature maps is pivotal in discerning intricate patterns within the input data, especially when considering their relative spatial orientations or poses. 
 
 Within the architecture of group convolutional neural networks (G-CNNs), $G$-equivariant layers play a crucial role. They facilitate weight sharing across the network and ensure the preservation of specific invariance properties intrinsic to the data. While pooling layers, which inherently bolster such invariances, are a common subsequent step after $G$-equivariant layers.
 
-For a more comprehensive understanding of group convolutional neural networks and their practical applications, consult \autocite{cohen2016-2} and \autocite{lafarge2021}, respectively.
-
+For a more comprehensive understanding of group convolutional neural networks and their practical applications, consult [Group Equivariant Convolutional Networks, 2016](http://arxiv.org/abs/1602.07576) and [Roto-translation equivariant convolutional networks, 2021](https://doi.org/10.1016/j.media.2020.101849), respectively.
