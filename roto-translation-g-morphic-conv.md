@@ -2,7 +2,7 @@
 # Roto-Translation $G$-Morphic Convolution; $G = \text{SE}(2)$
 
 In the standard interpretation of convolution, the kernel $k$ is simply translated (or shifted) across the function $f$ as part of the convolution operation, but it is not acted upon by the group representation. 
-Let us take a nonstandard perspective on connvolution, where the kernel $k$ is being acted upon by the group representation $\lambda(g)$.
+Let us take a nonstandard perspective on convolution, where the kernel $k$ is being acted upon by the group representation $\lambda(g)$.
 
 Essentially, group convolution $(k \ast f)(g)$ is a template matching between a kernel $k$, and an input $f$. First, $k$ is transformed by the action of the group, and then convolved with the input: 
 
