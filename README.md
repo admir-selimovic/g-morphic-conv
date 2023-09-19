@@ -75,6 +75,11 @@ The translation $G$-map of cross-correlations arises from the fact that the same
 
 
 The requirement we seek is $G$-map wrt translation:
+
+<div align="center"> 
+  <img src="./img/g-morph-conv-trans-diag.png" width="200">
+</div>
+
 \[\begin{tikzcd}
 	f && f^{\star} \\
 	\\
