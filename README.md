@@ -1,9 +1,9 @@
-# $G$-Morphic Convolution
+# G-Morphic Convolution
 
 Group-theoretic studies of $G$-morphism in convolution.
 
 
-## Translation $G$-Morphic Convolution; $G = (\mathbb{R}^2,+)$
+## Translation G-Morphic Convolution
 
 A study of convolution operations within the context of the additive group $\mathbb{R}^2$.
 
@@ -15,7 +15,7 @@ A study of convolution operations within the context of the additive group $\mat
 5. **Practical Implications**: Highlights the broader relevance and implications of the presented concepts, suggesting potential applications in various domains.
 
 
-## Roto-Translation $G$-Morphic Convolution; $G = \text{SE}(2) $
+## Roto-Translation G-Morphic Convolution
 
 A study of $G$-morphic convolutions, which are convolutions that take into account both translations and rotations under the special Euclidean group $\text{SE}(2)$.
 
